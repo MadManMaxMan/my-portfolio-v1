@@ -1,23 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+// 1. Notice we added 'render' to the import here
+import { getCollection, render } from 'astro:content'; 
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-// 1. Tell Astro which pages to generate
 export async function getStaticPaths() {
 	const projects = await getCollection('projects');
 	return projects.map((project) => ({
-		params: { slug: project.slug },
+        // 2. Astro 5 uses project.id instead of project.slug
+		params: { slug: project.id }, 
 		props: { project },
 	}));
 }
 
-// 2. Get the specific project data for the current page
 const { project } = Astro.props;
 
-// 3. Convert the Markdown body into HTML
-const { Content } = await project.render();
+// 3. Astro 5 uses the imported render() function
+const { Content } = await render(project); 
 ---
 
 <!doctype html>
@@ -48,6 +48,7 @@ const { Content } = await project.render();
 				padding: 0.2em 0.8em;
 				border-radius: 999px;
 				font-size: 0.85em;
+				color: #333;
 			}
 		</style>
 	</head>
@@ -58,6 +59,7 @@ const { Content } = await project.render();
 			<article>
 				<div class="project-header">
 					<h1>{project.data.title}</h1>
+					
 					{project.data.tags && (
 						<ul class="tags">
 							{project.data.tags.map((tag: string) => (
