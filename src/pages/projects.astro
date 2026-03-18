@@ -1,0 +1,147 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <style>
+      /* The Grid Layout */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem;
+      }
+      
+      /* Individual Project Cards */
+      .project-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background: #ffffff;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+      
+      .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+      }
+      
+      .project-content h3 {
+        margin: 0 0 0.5rem 0;
+        color: #00274C; /* Subtle U of M Blue */
+        font-size: 1.25rem;
+      }
+      
+      .project-content p {
+        margin: 0 0 1rem 0;
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      
+      /* Tags for skills/technologies */
+      .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: auto;
+      }
+      
+      .tag {
+        background: #f4f4f4;
+        color: #333;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+      
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Primary Projects</h1>
+      <p>A selection of my engineering work, ranging from aerospace research to custom marine fabrication.</p>
+      
+      <ul class="projects-grid">
+        
+        <li>
+          <a href="/projects/lake-superior-expedition">
+            <div class="project-card">
+              <img src="https://via.placeholder.com/600x400?text=Rowboat+Expedition" alt="Lake Superior Expedition" />
+              <div class="project-content">
+                <h3>Lake Superior Solo Expedition</h3>
+                <p>Designed, built, and tested the rowboat that served as transportation and housing for a 31-day, 600-mile journey.</p>
+                <div class="tags">
+                  <span class="tag">Marine Engineering</span>
+                  <span class="tag">Fabrication</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="/projects/carbon-fiber-booms">
+            <div class="project-card">
+              <img src="https://via.placeholder.com/600x400?text=Carbon+Fiber+Booms" alt="Asymmetric Carbon Fiber Booms" />
+              <div class="project-content">
+                <h3>Deployable Solar Sails</h3>
+                <p>Designed, constructed, and analyzed asymmetric carbon fiber booms, including utilizing a cryogenic test chamber for space environment validation.</p>
+                <div class="tags">
+                  <span class="tag">Aerospace</span>
+                  <span class="tag">Composites</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="/projects/first-robotics">
+            <div class="project-card">
+              <img src="https://via.placeholder.com/600x400?text=Autonomous+Robotics" alt="FIRST Robotics Systems" />
+              <div class="project-content">
+                <h3>Autonomous Robotics Systems</h3>
+                <p>Engineered advanced Java control systems for autonomous and teleoperated modes while managing a 30-member team.</p>
+                <div class="tags">
+                  <span class="tag">Java</span>
+                  <span class="tag">Control Systems</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
