@@ -3,6 +3,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// 1. Import the getCollection function
+import { getCollection } from 'astro:content';
+
+// 2. Fetch all projects and sort them by date (newest first)
+const projects = await getCollection('projects');
+projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
@@ -10,7 +17,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   <head>
     <BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
     <style>
-      /* The Grid Layout */
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -20,7 +26,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         margin-top: 2rem;
       }
       
-      /* Individual Project Cards */
       .project-card {
         border: 1px solid #e0e0e0;
         border-radius: 8px;
@@ -46,11 +51,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       .project-content {
         padding: 1.5rem;
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
       }
       
       .project-content h3 {
         margin: 0 0 0.5rem 0;
-        color: #00274C; /* Subtle U of M Blue */
+        color: #00274C;
         font-size: 1.25rem;
       }
       
@@ -61,12 +68,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         line-height: 1.5;
       }
       
-      /* Tags for skills/technologies */
       .tags {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
-        margin-top: auto;
+        margin-top: auto; /* Pushes tags to the bottom of the card */
       }
       
       .tag {
@@ -91,55 +97,34 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       <p>A selection of my engineering work, ranging from aerospace research to custom marine fabrication.</p>
       
       <ul class="projects-grid">
-        
-        <li>
-          <a href="/projects/lake-superior-expedition">
-            <div class="project-card">
-              <img src="https://via.placeholder.com/600x400?text=Rowboat+Expedition" alt="Lake Superior Expedition" />
-              <div class="project-content">
-                <h3>Lake Superior Solo Expedition</h3>
-                <p>Designed, built, and tested the rowboat that served as transportation and housing for a 31-day, 600-mile journey.</p>
-                <div class="tags">
-                  <span class="tag">Marine Engineering</span>
-                  <span class="tag">Fabrication</span>
+        {
+          /* 3. Loop through the projects array and generate HTML for each one */
+          projects.map((project) => (
+            <li>
+              <a href={`/projects/${project.id}`}>
+                <div class="project-card">
+                  <img 
+                    src={project.data.heroImage || "https://via.placeholder.com/600x400?text=Project+Image"} 
+                    alt={project.data.title} 
+                  />
+                  <div class="project-content">
+                    <h3>{project.data.title}</h3>
+                    <p>{project.data.description}</p>
+                    
+                    {/* Check if tags exist, then map through them */}
+                    {project.data.tags && (
+                      <div class="tags">
+                        {project.data.tags.map((tag) => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li>
-          <a href="/projects/carbon-fiber-booms">
-            <div class="project-card">
-              <img src="https://via.placeholder.com/600x400?text=Carbon+Fiber+Booms" alt="Asymmetric Carbon Fiber Booms" />
-              <div class="project-content">
-                <h3>Deployable Solar Sails</h3>
-                <p>Designed, constructed, and analyzed asymmetric carbon fiber booms, including utilizing a cryogenic test chamber for space environment validation.</p>
-                <div class="tags">
-                  <span class="tag">Aerospace</span>
-                  <span class="tag">Composites</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <li>
-          <a href="/projects/first-robotics">
-            <div class="project-card">
-              <img src="https://via.placeholder.com/600x400?text=Autonomous+Robotics" alt="FIRST Robotics Systems" />
-              <div class="project-content">
-                <h3>Autonomous Robotics Systems</h3>
-                <p>Engineered advanced Java control systems for autonomous and teleoperated modes while managing a 30-member team.</p>
-                <div class="tags">
-                  <span class="tag">Java</span>
-                  <span class="tag">Control Systems</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </li>
-
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </main>
     <Footer />
