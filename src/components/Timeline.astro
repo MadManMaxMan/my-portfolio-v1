@@ -1,112 +1,173 @@
 ---
-// This top area enclosed by three dashes is the "frontmatter". 
-// You can write regular JavaScript here to import other files or define variables.
+import { getCollection } from 'astro:content';
+
+// Fetch all projects and sort them by date (newest first)
+const projects = await getCollection('projects');
+projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <section class="timeline-section">
-  <h2>Engineering Journey</h2>
   <div class="timeline">
     
-    <div class="timeline-item left">
-      <div class="timeline-content">
-        <h3>M.S.E. Space Systems Engineering</h3>
-        <span class="date">Expected May 2026</span>
-        <p>Working on satellite communications, including DSN link analysis for Mars orbiters.</p>
-      </div>
-    </div>
+    {
+      /* map() gives us the project AND its index (0, 1, 2...) */
+      projects.map((project, index) => (
+        /* If the index is even, put it on the left. If odd, put it on the right. */
+        <div class={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+          
+          <a href={`/projects/${project.id}`} class="timeline-link">
+            <div class="timeline-content">
+              <h3>{project.data.title}</h3>
+              
+              <span class="date">
+                {project.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              </span>
+              
+              <div class="details">
+                <p>{project.data.description}</p>
+                {project.data.tags && (
+                  <div class="tags">
+                    {project.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-    </div>
+            </div>
+          </a>
+        </div>
+      ))
+    }
+
+  </div>
 </section>
 
 <style>
-/* Container for the timeline */
-.timeline-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: sans-serif;
-}
+  .timeline-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+  }
 
-.timeline-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-/* The actual timeline line */
-.timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  /* The center vertical line */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #00274C; 
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+  }
 
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background-color: #00274C; /* U of M Blue */
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
-}
+  .timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+  }
 
-/* Timeline Item Container */
-.timeline-item {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
-  box-sizing: border-box;
-}
+  /* The dots on the timeline */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: white;
+    border: 4px solid #FFCB05; 
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
 
-/* The circles on the timeline */
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  right: -10px;
-  background-color: white;
-  border: 4px solid #FFCB05; /* U of M Maize */
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
-}
+  .left { left: 0; }
+  .right { left: 50%; }
 
-.left {
-  left: 0;
-}
+  .left::after { right: -14px; }
+  .right::after { left: -14px; }
 
-.right {
-  left: 50%;
-}
+  /* Link Styling */
+  .timeline-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
 
-.left::after {
-  right: -14px; /* Adjusting circle placement for the left side */
-}
+  /* The Box/Card itself */
+  .timeline-content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    overflow: hidden; /* Keeps the expanding content neat */
+  }
 
-.right::after {
-  left: -14px; /* Adjusting circle placement for the right side */
-}
+  /* The Hover State for the Box */
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+  }
 
-/* The actual content box */
-.timeline-content {
-  padding: 20px;
-  background-color: #f4f4f4;
-  position: relative;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+  .timeline-content h3 {
+    margin: 0;
+    color: #00274C;
+    font-size: 1.25rem;
+  }
 
-.timeline-content h3 {
-  margin-top: 0;
-  color: #00274C;
-}
+  .date {
+    font-weight: bold;
+    color: #666;
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
 
-.date {
-  font-weight: bold;
-  color: #666;
-  display: block;
-  margin-bottom: 10px;
-}
+  /* === The Expanding Magic === */
+  .details {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+  }
+
+  /* When hovering over the content box, trigger the details to expand */
+  .timeline-content:hover .details {
+    max-height: 500px; /* Needs to be larger than the expected text height */
+    opacity: 1;
+    margin-top: 15px;
+  }
+
+  .details p {
+    margin: 0 0 1rem 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: #e0e0e0;
+    color: #333;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 </style>
