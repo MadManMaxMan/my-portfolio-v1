@@ -1,9 +1,12 @@
 ---
 title: 'Lake Superior Solo Rowing Expedition'
-description: 'Designed, built, and tested the row boat that served as transportation and housing for a 31-day journey.'
+description: 'Designed, built, and tested the 24-foot adventure rowboat that served as transportation and housing for a 31-day journey.'
 pubDate: '2024-08-01'
 heroImage: '/images/lake-superior-boat.jpg'
 tags: ['marine engineering', 'fabrication', 'expedition']
+role: 'Lead Designer & Fabricator'
+status: 'Completed'
+tools: ['SolidWorks', 'Arduino', 'Epoxy Composite']
 ---
 
 ## Overview

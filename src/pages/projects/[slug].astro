@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// 1. Tell Astro which pages to generate
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+// 2. Get the specific project data for the current page
+const { project } = Astro.props;
+
+// 3. Convert the Markdown body into HTML
+const { Content } = await project.render();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={project.data.title} description={project.data.description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.project-header {
+				text-align: center;
+				margin-bottom: 2em;
+				padding-top: 2em;
+			}
+			.tags {
+				display: flex;
+				gap: 0.5em;
+				justify-content: center;
+				list-style: none;
+				padding: 0;
+				margin: 1em 0;
+			}
+			.tag {
+				background: #eee;
+				padding: 0.2em 0.8em;
+				border-radius: 999px;
+				font-size: 0.85em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="project-header">
+					<h1>{project.data.title}</h1>
+					{project.data.tags && (
+						<ul class="tags">
+							{project.data.tags.map((tag: string) => (
+								<li class="tag">{tag}</li>
+							))}
+						</ul>
+					)}
+					<hr />
+				</div>
+				
+				<div class="prose">
+					<Content />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
