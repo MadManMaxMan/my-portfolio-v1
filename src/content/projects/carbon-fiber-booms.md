@@ -2,7 +2,7 @@
 title: 'Carbon Fiber TRAC Booms Research'
 description: 'Facilitated research of TRAC booms with various construction methods.'
 pubDate: '2022-08-01'
-heroImage: '/images/TRAC-boom-hero.jpg'
+heroImage: '/images/TRAC-boom-testing-image.jpg'
 tags: ['Composite Materials', 'Fabrication', 'R&D', 'Testing']
 role: 'Undergraduate Researcher'
 status: 'Completed'

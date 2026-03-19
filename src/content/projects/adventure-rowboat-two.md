@@ -2,7 +2,7 @@
 title: 'Adventure Rowboat 2 Build'
 description: 'Designed, built, and tested the 24-foot adventure rowboat.'
 pubDate: '2026-03-01'
-heroImage: '/images/adventure-rowboat-two.jpg'
+heroImage: '/images/rowboat-2-build-hero.jpg'
 tags: ['Marine Engineering', 'Fabrication', 'Composite Materials']
 role: 'Lead Designer & Fabricator'
 status: 'In Progress'
@@ -10,11 +10,13 @@ tools: ['SolidWorks', 'Fiberlgass Composite', 'FEA']
 ---
 
 ## Overview
-In the Spring of 2024, I designed, built, and tested my 19-foot adventure rowboat. This was my first experience in boat design, construction, and rowing. 
+In the Summer of 2025, I set out to design a second rowboat based on my first build but with expanded requirements. The fundamental differences detail a craft with rowing and sleeping positions for two individuals instead of one. As of March of 2026, I have completed primary design and made considerable progress in the manufacturing of the craft. I am currently testing individual subsystems and look to integrate by May. 
 
-## The Engineering Challenge
-The core of this expedition relied entirely on the vessel. I designed, built, and tested the rowboat myself, ensuring it could withstand unpredictable environments while serving as my only form of transportation and housing. In this process I performed trade studies, designed and fabricated composite materials, and tested the craft to ensure it would operate in the conditions I required. 
+## Another section
+Blah blah blah.
 
-## Technical Specifications
-* **Construction:** Stitch and glue fiberglass construction was used to build the primary hull. This involves precisely cutting panels that are stitched together to form the shape of the hull, which is then solidified with epoxy and fiberglass. The strength of the hull comes both from the wood panel core and the outer layers of fiberglass.
-* **Testing:** Testing of this first vessel was not as rigorous as I would have liked. I loaded predetermined weights to understand where the waterline sat in calm water. This gave me a rough idea of how much mass I could carry on my trips. I also rowed in rough waters with differing amounts of weights and weight distribution to understand the practical limits of the boat. This allowed me to understand how the boat handles under these conditions and proved valuable knowledge while adventuring.
+## Another section
+Blah blah blah.
+
+## Another section
+Blah blah blah.
