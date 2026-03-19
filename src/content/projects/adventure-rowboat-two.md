@@ -2,7 +2,7 @@
 title: 'Adventure Rowboat 2 Build'
 description: 'Designed, built, and tested the 24-foot adventure rowboat.'
 pubDate: '2026-03-01'
-heroImage: '/images/rowboat-2-build-hero.jpg'
+heroImage: '/images/Rowboat-2-build-hero.jpg'
 tags: ['Marine Engineering', 'Fabrication', 'Composite Materials']
 role: 'Lead Designer & Fabricator'
 status: 'In Progress'
