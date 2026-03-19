@@ -24,6 +24,14 @@ projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
               </span>
               
               <div class="details">
+                {/* Image appears here if it exists in frontmatter */}
+                {project.data.heroImage && (
+                  <img 
+                    src={project.data.heroImage} 
+                    alt={`Cover image for ${project.data.title}`} 
+                    class="timeline-image"
+                  />
+                )}
                 <p>{project.data.description}</p>
                 {project.data.tags && (
                   <div class="tags">
@@ -139,15 +147,26 @@ projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   .details {
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    /* Slowed down slightly (0.6s) so the image has time to reveal smoothly */
+    transition: max-height 0.6s cubic-bezier(0, 1, 0, 1), opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
   }
 
   /* When hovering over the content box, trigger the details to expand */
   .timeline-content:hover .details {
-    max-height: 500px; /* Needs to be larger than the expected text height */
+    /* Increased heavily to account for the image height + text */
+    max-height: 1000px; 
+    /* The cubic-bezier transition above makes this large number snap to the exact height needed */
+    transition: max-height 0.6s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
     opacity: 1;
     margin-top: 15px;
   }
+
+  .timeline-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
 
   .details p {
     margin: 0 0 1rem 0;

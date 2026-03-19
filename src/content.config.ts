@@ -14,8 +14,9 @@ const projects = defineCollection({
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         heroImage: z.string().optional(),
-        // Added this line to support the tags we put in your Markdown!
+        // Added this line to support the tags we put in your Markdown
         tags: z.array(z.string()).optional(),
+        order: z.number().optional()
     }),
 });
 

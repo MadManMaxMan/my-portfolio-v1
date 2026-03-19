@@ -4,12 +4,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-// 1. Import the getCollection function
 import { getCollection } from 'astro:content';
 
-// 2. Fetch all projects and sort them by date (newest first)
-const projects = await getCollection('projects');
-projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// 1. Get all projects
+const allProjects = await getCollection('projects');
+
+// 2. Filter for only those with an 'order' field, then sort them 1, 2, 3...
+const showcasedProjects = allProjects
+    .filter(project => project.data.order !== undefined)
+    .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <!doctype html>
