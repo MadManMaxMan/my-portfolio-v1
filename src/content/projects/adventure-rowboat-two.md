@@ -20,3 +20,13 @@ Blah blah blah.
 
 ## Another section
 Blah blah blah.
+
+
+
+## Personal Takeaways
+
+### Where I Succeeded
+
+### Where I Failed
+
+### What I Learned
