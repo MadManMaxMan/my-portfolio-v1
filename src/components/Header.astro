@@ -79,11 +79,13 @@ import { SITE_TITLE } from '../consts';
 	.nav-right {
 		display: flex;
 		justify-content: flex-end;
-		align-items: center; /* <--- NEW: perfectly centers the button vertically in the column */
+		align-items: center;
+		padding: 2px; /* Gives the border physical space so it cannot be clipped */
 	}
 
 	.resume-button {
-		display: inline-block; /* <--- NEW: Forces the browser to respect the top and bottom borders */
+		display: inline-flex; 
+		box-sizing: border-box; /* Forces the 1px border to be drawn INSIDE the button's height */
 		padding: 0.5em 1.2em;
 		background-color: transparent;
 		color: #e0e6ed;
@@ -91,6 +93,7 @@ import { SITE_TITLE } from '../consts';
 		border-radius: 6px;
 		text-decoration: none;
 		font-weight: bold;
+		line-height: normal; /* Prevents global line-height from squishing the button */
 		transition: all 0.2s ease;
 	}
 
