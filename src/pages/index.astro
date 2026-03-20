@@ -114,6 +114,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<section class="hero">
 				<div class="hero-text">
 					<h1>Hello, I'm Maxton.</h1>
+					<div class="credentials-badge">
+    <img src="/images/block-m.png" alt="University of Michigan" class="block-m" />
+    <span class="degree">M.S.E. Space Systems Engineering</span>
+    <span class="divider">|</span>
+    <span class="degree">B.S.E. Aerospace Engineering (Physics Minor)</span>
+</div>
 					<p class="subtitle">
 						I am an Aerospace and Space Systems Engineer passionate about designing solutions for extreme environments, from deep space to open water.
 					</p>
@@ -132,3 +138,30 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Footer />
 	</body>
 </html>
+
+<style>
+.credentials-badge {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.75em;
+		margin-bottom: 2.5em; /* Lots of breathing room before the paragraph */
+		font-family: monospace; /* Gives it a clean, technical spec feel */
+		font-size: 0.95rem;
+	}
+	
+	.block-m {
+		height: 24px;
+		width: auto;
+	}
+	
+	.degree {
+		color: #e0e6ed;
+		letter-spacing: 0.5px;
+	}
+	
+	.divider {
+		color: #FFCB05; /* Maize yellow pop */
+		font-weight: bold;
+	}
+</style>
