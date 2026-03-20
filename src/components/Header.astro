@@ -10,14 +10,15 @@ import { SITE_TITLE } from '../consts';
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/projects">Projects</HeaderLink>
 			<HeaderLink href="/timeline">Timeline</HeaderLink>
-			<a href="/Maxton_Herst_Resume.pdf" target="_blank" class="resume-button">Resume</a>
+			<a href="/Herst_Maxton_Resume.pdf" target="_blank" class="resume-button">Resume</a>
 		</div>
 	</nav>
 </header>
 <style>
 	header {
 		margin: 0;
-		padding: 0 1em;
+		/* Added more vertical padding to give space between the top/bottom edges */
+		padding: 1.5em 2em; 
 		background: #0b111a;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	}
@@ -28,33 +29,37 @@ import { SITE_TITLE } from '../consts';
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
-		color: #ffffff; /* Ensures the title is white */
+		color: #ffffff;
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		flex-wrap: wrap; /* This is the magic line that allows wrapping on mobile */
-		padding: 1em 0;
+		flex-wrap: wrap;
+		/* These two lines stop the links from flying to the far right on big monitors */
+		max-width: 1000px; 
+		margin: 0 auto; 
 	}
 	.internal-links {
 		display: flex;
 		align-items: center;
-		gap: 0.5em; /* Controls the spacing between the text links */
+		/* Significantly increased the space between each link */
+		gap: 2.5em; 
 	}
 	nav a {
-		padding: 0.5em 0.8em;
+		padding: 0.5em 0; 
 		color: #e0e6ed;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
+		font-weight: 500;
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: #FFCB05; /* Maize yellow active state */
+		border-bottom-color: #FFCB05;
 	}
 	.resume-button {
 		margin-left: 0.5em;
-		padding: 0.4em 1em;
+		padding: 0.5em 1.2em;
 		background-color: transparent;
 		color: #e0e6ed;
 		border: 1px solid #FFCB05;
@@ -70,18 +75,20 @@ import { SITE_TITLE } from '../consts';
 
 	/* Mobile Responsiveness */
 	@media (max-width: 720px) {
+		header {
+			padding: 1em; /* Tighter space for mobile */
+		}
 		nav {
-			justify-content: center; /* Centers title and links on mobile */
-			gap: 1em; /* Adds space between the title row and link row */
+			justify-content: center;
+			gap: 1.5em; 
 		}
 		.internal-links {
 			justify-content: center;
-			flex-wrap: wrap; /* Allows links to stack if screen is super narrow */
-			gap: 0.2em;
+			flex-wrap: wrap;
+			gap: 1em; /* Brings the links a bit closer together on small screens */
 		}
 		nav a {
-			font-size: 0.9em; /* Shrinks text slightly to fit better */
-			padding: 0.5em 0.4em;
+			font-size: 0.9em;
 		}
 	}
 </style>
