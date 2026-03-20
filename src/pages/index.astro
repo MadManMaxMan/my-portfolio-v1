@@ -9,20 +9,125 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			/* Scope styles strictly to the homepage */
+			main {
+				width: calc(100% - 2em);
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 4em 0; /* Gives the whole section breathing room */
+			}
+			
+			/* The Flexbox container for side-by-side layout */
+			.hero {
+				display: flex;
+				align-items: center;
+				gap: 4em;
+			}
+			
+			/* Text sizing and spacing */
+			.hero-text {
+				flex: 1; /* Takes up half the space */
+			}
+			
+			h1 {
+				font-size: 3.5rem;
+				line-height: 1.1;
+				margin-bottom: 0.25em;
+				color: #00274C;
+			}
+			
+			.subtitle {
+				font-size: 1.25rem;
+				color: #555;
+				line-height: 1.6;
+				margin-bottom: 2em; /* Pushes the buttons down slightly */
+			}
+			
+			/* Styling the links to look like clickable buttons */
+			.cta-buttons {
+				display: flex;
+				gap: 1em;
+				flex-wrap: wrap;
+			}
+			
+			.button {
+				display: inline-block;
+				padding: 0.8em 1.5em;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: transform 0.2s ease, background-color 0.2s ease;
+			}
+			
+			.button.primary {
+				background-color: #00274C;
+				color: white;
+			}
+			
+			.button.primary:hover {
+				background-color: #001a33;
+				transform: translateY(-3px);
+			}
+			
+			.button.secondary {
+				background-color: #f4f4f4;
+				color: #00274C;
+				border: 1px solid #e0e0e0;
+			}
+			
+			.button.secondary:hover {
+				background-color: #e0e0e0;
+				transform: translateY(-3px);
+			}
+
+			/* Image sizing and styling */
+			.hero-image {
+				flex: 1; /* Takes up the other half */
+				max-width: 400px;
+			}
+			
+			.hero-image img {
+				width: 100%;
+				height: auto;
+				border-radius: 16px;
+				box-shadow: 0 10px 30px rgba(0, 39, 76, 0.15); /* Soft drop shadow */
+				object-fit: cover;
+			}
+
+			/* Mobile Responsiveness: Stacks the image and text on small screens */
+			@media (max-width: 768px) {
+				.hero {
+					flex-direction: column-reverse; /* Puts image on top on mobile */
+					text-align: center;
+					gap: 2em;
+				}
+				.cta-buttons {
+					justify-content: center;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>Hello, I'm Maxton.</h1>
-			<p>
-				I am an Aerospace and Space Systems Engineer passionate about designing solutions for extreme environments, from deep space to the open water. 
-			</p>
-			<p>
-				This site serves as a digital portfolio of my engineering work. You can explore my <a href="/projects">primary projects</a>, where I detail my technical experience with things like composite structures, spacecraft control dynamics, and custom fly-by-wire systems.
-			</p>
-			<p>
-				To see how my engineering journey has evolved over time, you can view a <a href="/timeline">timeline of my track record and achievements</a>. This maps my progression from engineering Java control systems for robotics teams all the way to designing and building the custom rowboat I used to navigate 600 miles across Lake Superior.
-			</p>
+			<section class="hero">
+				<div class="hero-text">
+					<h1>Hello, I'm Maxton.</h1>
+					<p class="subtitle">
+						I am an Aerospace and Space Systems Engineer passionate about designing solutions for extreme environments, from deep space to open water.
+					</p>
+					
+					<div class="cta-buttons">
+						<a href="/projects" class="button primary">View Engineering Projects</a>
+						<a href="/timeline" class="button secondary">See My Timeline</a>
+					</div>
+				</div>
+				
+				<div class="hero-image">
+					<img src="/images/GradPortrait.jpg" alt="Maxton Herst Portrait" />
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
