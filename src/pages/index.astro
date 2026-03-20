@@ -9,104 +9,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			/* Scope styles strictly to the homepage */
-			main {
-				width: calc(100% - 2em);
-				max-width: 1000px;
-				margin: 0 auto;
-				padding: 4em 0; /* Gives the whole section breathing room */
-			}
-			
-			/* The Flexbox container for side-by-side layout */
-			.hero {
-				display: flex;
-				align-items: center;
-				gap: 4em;
-			}
-			
-			/* Text sizing and spacing */
-			.hero-text {
-				flex: 1; /* Takes up half the space */
-			}
-			
-			h1 {
-		font-size: 3.5rem;
-		line-height: 1.1;
-		margin-bottom: 0.25em;
-		color: #ffffff; /* Make sure this is white! */
-	}
-			
-			.subtitle {
-		font-size: 1.25rem;
-		color: #a0aab5; /* Make sure this is light gray! */
-		line-height: 1.6;
-		margin-bottom: 2em; 
-	}
-			
-			/* Styling the links to look like clickable buttons */
-			.cta-buttons {
-				display: flex;
-				gap: 1em;
-				flex-wrap: wrap;
-			}
-			
-			.button {
-				display: inline-block;
-				padding: 0.8em 1.5em;
-				border-radius: 8px;
-				text-decoration: none;
-				font-weight: bold;
-				transition: transform 0.2s ease, background-color 0.2s ease;
-			}
-			
-			.button.primary {
-				background-color: #00274C;
-				color: white;
-			}
-			
-			.button.primary:hover {
-				background-color: #001a33;
-				transform: translateY(-3px);
-			}
-			
-			.button.secondary {
-				background-color: #f4f4f4;
-				color: #00274C;
-				border: 1px solid #e0e0e0;
-			}
-			
-			.button.secondary:hover {
-				background-color: #e0e0e0;
-				transform: translateY(-3px);
-			}
-
-			/* Image sizing and styling */
-			.hero-image {
-				flex: 1; /* Takes up the other half */
-				max-width: 400px;
-			}
-			
-			.hero-image img {
-				width: 100%;
-				height: auto;
-				border-radius: 16px;
-				box-shadow: 0 10px 30px rgba(0, 39, 76, 0.15); /* Soft drop shadow */
-				object-fit: cover;
-			}
-
-			/* Mobile Responsiveness: Stacks the image and text on small screens */
-			@media (max-width: 768px) {
-				.hero {
-					flex-direction: column-reverse; /* Puts image on top on mobile */
-					text-align: center;
-					gap: 2em;
-				}
-				.cta-buttons {
-					justify-content: center;
-				}
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
@@ -114,13 +16,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<section class="hero">
 				<div class="hero-text">
 					<h1>Hello, I'm Maxton.</h1>
+					
 					<div class="credentials-box">
-	<img src="/images/Block_M.png" alt="University of Michigan" class="block-m-logo" />
-	<div class="degrees">
-		<span class="degree-master">M.S.E. Space Systems Engineering</span>
-		<span class="degree-bachelor">B.S.E. Aerospace Engineering (Physics Minor)</span>
-	</div>
-</div>
+						<img src="/images/Block_M.png" alt="University of Michigan" class="block-m-logo" />
+						<div class="degrees">
+							<span class="degree-master">M.S.E. Space Systems Engineering</span>
+							<span class="degree-bachelor">B.S.E. Aerospace Engineering (Physics Minor)</span>
+						</div>
+					</div>
+					
 					<p class="subtitle">
 						I am an Aerospace and Space Systems Engineer passionate about designing solutions for extreme environments, from deep space to open water.
 					</p>
@@ -141,46 +45,136 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
-.credentials-box {
-		display: inline-flex; /* Keeps the box wrapped tightly around the text */
+	/* Scope styles strictly to the homepage */
+	main {
+		width: calc(100% - 2em);
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 4em 0; /* Gives the whole section breathing room */
+	}
+	
+	/* The Flexbox container for side-by-side layout */
+	.hero {
+		display: flex;
+		align-items: center;
+		gap: 4em;
+	}
+	
+	/* Text sizing and spacing */
+	.hero-text {
+		flex: 1; /* Takes up half the space */
+	}
+	
+	h1 {
+		font-size: 3.0rem;
+		line-height: 1.1;
+		margin-bottom: 0.25em;
+		color: #ffffff; /* Make sure this is white! */
+	}
+
+	/* === CREDENTIALS BOX === */
+	.credentials-box {
+		display: inline-flex; 
 		align-items: center;
 		gap: 1.25em;
 		padding: 1em 1.5em;
-		margin-bottom: 2.5em;
-		border: 1.5px solid #FFCB05; /* The Maize border */
-		border-radius: 12px; /* Rounded corners */
-		background-color: rgba(255, 203, 5, 0.05); /* A very faint Maize tint for the background */
+		margin-top: 0.5em; /* Gives it a little breathing room from the h1 */
+		margin-bottom: 1em; /* SHRUNK THIS to bring the subtitle closer */
+		border: 1.5px solid #FFCB05; 
+		border-radius: 12px; 
+		background-color: rgba(255, 203, 5, 0.05); 
 	}
 
 	.block-m-logo {
-		height: 45px; /* Scaled to span perfectly across the two lines of text */
+		height: 45px; 
 		width: auto;
-		border-radius: 0 !important; /* Forces the global CSS to stop chopping off the corners! */
+		border-radius: 0 !important; 
 		object-fit: contain;
 	}
 
 	.degrees {
 		display: flex;
 		flex-direction: column;
-		gap: 0.25em; /* Tight spacing between the two degrees */
-		font-family: monospace; /* Keeps that clean, technical look */
+		gap: 0.25em; 
+		font-family: monospace; 
 	}
 
-	.degree-master {
-		color: #ffffff;
-		font-weight: bold;
-		font-size: 1.05rem;
-		line-height: 1.2;
-	}
-
+	.degree-master,
 	.degree-bachelor {
-		color: #a0aab5;
-		font-size: 0.95rem;
+		color: #ffffff;
+		font-size: 1.0rem;
 		line-height: 1.2;
+	}
+	/* ====================== */
+	
+	.subtitle {
+		font-size: 1.25rem;
+		color: #a0aab5; 
+		line-height: 1.6;
+		margin-bottom: 2em; 
 	}
 	
-	/* Mobile check to make sure the box doesn't break the screen width */
+	/* Styling the links to look like clickable buttons */
+	.cta-buttons {
+		display: flex;
+		gap: 1em;
+		flex-wrap: wrap;
+	}
+	
+	.button {
+		display: inline-block;
+		padding: 0.8em 1.5em;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: bold;
+		transition: transform 0.2s ease, background-color 0.2s ease;
+	}
+	
+	.button.primary {
+		background-color: #00274C;
+		color: white;
+	}
+	
+	.button.primary:hover {
+		background-color: #001a33;
+		transform: translateY(-3px);
+	}
+	
+	.button.secondary {
+		background-color: #f4f4f4;
+		color: #00274C;
+		border: 1px solid #e0e0e0;
+	}
+	
+	.button.secondary:hover {
+		background-color: #e0e0e0;
+		transform: translateY(-3px);
+	}
+
+	/* Image sizing and styling */
+	.hero-image {
+		flex: 1; 
+		max-width: 400px;
+	}
+	
+	.hero-image img {
+		width: 100%;
+		height: auto;
+		border-radius: 16px;
+		box-shadow: 0 10px 30px rgba(0, 39, 76, 0.15); 
+		object-fit: cover;
+	}
+
+	/* Unified Mobile Responsiveness */
 	@media (max-width: 768px) {
+		.hero {
+			flex-direction: column-reverse; /* Puts image on top on mobile */
+			text-align: center;
+			gap: 2em;
+		}
+		.cta-buttons {
+			justify-content: center;
+		}
 		.credentials-box {
 			flex-direction: column;
 			text-align: center;
