@@ -78,10 +78,12 @@ import { SITE_TITLE } from '../consts';
 
 	.nav-right {
 		display: flex;
-		justify-content: flex-end; /* Forces resume button to the far right */
+		justify-content: flex-end;
+		align-items: center; /* <--- NEW: perfectly centers the button vertically in the column */
 	}
 
 	.resume-button {
+		display: inline-block; /* <--- NEW: Forces the browser to respect the top and bottom borders */
 		padding: 0.5em 1.2em;
 		background-color: transparent;
 		color: #e0e6ed;
