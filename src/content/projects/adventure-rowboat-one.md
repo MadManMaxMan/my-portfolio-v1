@@ -1,6 +1,6 @@
 ---
 title: 'Adventure Rowboat 1 Build'
-description: 'Designed, built, and tested the 19-foot adventure rowboat.'
+description: 'Designed, built, and tested my 19-foot adventure rowboat.'
 pubDate: '2024-05-01'
 heroImage: '/images/Rowboat-1-build-hero.jpg'
 tags: ['Marine Engineering', 'Fabrication', 'Composite Materials']
