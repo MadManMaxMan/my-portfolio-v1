@@ -1,9 +1,9 @@
 ---
 title: 'Adventure Rowboat 2 Build'
 description: 'Designed, built, and tested my 24-foot adventure rowboat.'
-pubDate: '2026-03-01'
+pubDate: '2026-03-02'
 heroImage: '/images/Rowboat-2-build-hero.jpg'
-tags: ['Marine Engineering', 'Fabrication', 'Composite Materials']
+tags: ['Marine Engineering', 'Fabrication', 'Composite Materials', 'Systems Engineering']
 role: 'Lead Designer & Fabricator'
 status: 'In Progress'
 tools: ['SolidWorks', 'Fiberlgass Composite', 'FEA']
