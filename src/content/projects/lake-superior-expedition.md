@@ -7,6 +7,7 @@ tags: ['Expedition', 'Resiliance', 'Problem Solving']
 role: 'Captain'
 status: 'Completed'
 tools: ['Brain', 'Oars', 'Compass']
+order: 1
 ---
 ## Expedition Description
 ### Overview

@@ -7,6 +7,7 @@ tags: ['Marine Engineering', 'Fabrication', 'Composite Materials']
 role: 'Lead Designer & Fabricator'
 status: 'Completed'
 tools: ['SolidWorks', 'Fiberlgass Composite', 'FEA']
+order: 2
 ---
 ## Project Description
 ### Overview

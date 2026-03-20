@@ -7,6 +7,7 @@ tags: ['Composite Materials', 'Fabrication', 'R&D', 'Testing']
 role: 'Undergraduate Researcher'
 status: 'Completed'
 tools: ['Autoclave', 'Carbon Fiber', 'Custom Fixtures']
+order: 4
 ---
 ## Project Description
 ### Overview
